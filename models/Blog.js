@@ -19,7 +19,7 @@ const blog = new mongoose.Schema({
     comments : [
         {
             type : mongoose.Schema.Types.ObjectId,
-             ref : "comment"
+             ref : "comments"
         }
     ],
     Blog_Img : {
@@ -30,13 +30,10 @@ const blog = new mongoose.Schema({
         type : String,
         required  : [true , "category must be provided"]
     },
-    Date : {
-        type : Date,
-        required : true,
-        default : new Date().toLocaleDateString()
-    }
-})
-
+    
+},
+{ timestamps: true }
+)
 
 
 const blogModel = mongoose.model('blog', blog)

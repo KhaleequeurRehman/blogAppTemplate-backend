@@ -7,7 +7,7 @@ const login = require('../controllers/login')
 
 
 // user login here
-router.post('/user/login',login)
+router.post('/user/login', login)
 
 
 // export router hhere

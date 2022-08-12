@@ -1,6 +1,5 @@
 require('dotenv').config()
-require('./models/mongoose');
-
+require('./config/mongoose')
 // working
 // it is the express,js
 const express = require('express');
@@ -15,17 +14,21 @@ app.use(express.json())
 app.use(bodyParser.urlencoded({extended : true}))
 app.use(express.static(__dirname + '/public/'));
 
+
+
 // middle wares 
 const Register = require('./routes/register');
 const login = require('./routes/login');
-const allUser = require('./routes/getUsers');
+const allUser = require('./routes/users');
 const createBlog = require('./routes/blog')
+const comment = require('./routes/comment')
 
 // use Router
 app.use(Register)
 app.use(login) 
 app.use(allUser)
 app.use(createBlog)
+app.use(comment)
 
 
 

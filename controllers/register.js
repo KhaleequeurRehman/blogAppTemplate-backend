@@ -17,13 +17,12 @@ const Register = async function (req, res) {
             const register = new userModel({fname, lname,email, password : hasedPass})
             // save user in database
             register.save()
-            res.status(201).json('user created successfully')
+            res.status(201).json({"success" : 'user created successfully'})
         }else{
-            res.status(200).json('user already exist')
+            res.status(200).json({"msg" :'user already exist'})
         }
     } catch (error) {
-        console.log(error)
-        res.status(404).send("add correct user detials")
+        res.status(404).json({"msg" :"add correct user detials"})
 
     }
 
