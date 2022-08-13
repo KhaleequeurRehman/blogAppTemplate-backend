@@ -55,4 +55,7 @@ const getSingleUser = async function(req,res){
 
 
 
+
+
+
 module.exports = {getAlluser, dltUser,getSingleUser}

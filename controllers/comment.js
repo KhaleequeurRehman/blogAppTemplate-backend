@@ -1,8 +1,5 @@
 const express = require("express")
-const router = express.Router()
-const userModel = require('../models/users')
-const blogModel = require('../models/Blog')
-const createBog = require('../controllers/blog')
+
 const commentModel = require('../models/comments')
 
 
