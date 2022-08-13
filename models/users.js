@@ -22,7 +22,7 @@ const users = new mongoose.Schema({
     },
     profile_IMG : {
         type : String,
-        required : [true,"profile image must be uploaded"],
+        required : true,
     },
     password :{
         type : String,

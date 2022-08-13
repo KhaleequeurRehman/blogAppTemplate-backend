@@ -17,10 +17,10 @@ app.use(express.json())
 app.use(bodyParser.urlencoded({extended : true}))
 app.use(express.static(__dirname + '/public/'));
 
-app.use(fileUpload({
-    useTempFiles : true,
-    tempFileDir : '/tmp/'
-}));
+// app.use(fileUpload({
+//     useTempFiles : true,
+//     tempFileDir : '/tmp/'
+// }));
 
 
 // middle wares 
@@ -29,6 +29,7 @@ const login = require('./routes/login');
 const allUser = require('./routes/users');
 const createBlog = require('./routes/blog')
 const comment = require('./routes/comment')
+const forgetPassword = require('./routes/forgetPassword')
 
 // use Router
 app.use(Register)
@@ -36,6 +37,7 @@ app.use(login)
 app.use(allUser)
 app.use(createBlog)
 app.use(comment)
+app.use(forgetPassword)
 
 
 

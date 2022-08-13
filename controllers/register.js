@@ -3,7 +3,7 @@ const router = express.Router()
 const userModel = require('../models/users')
 const bcrypt = require('bcrypt')
 const path = require('path')
-const cloudinary = require('../config/cloudinary')
+const cloudinary = require('../config/cloudnry')
 
 
 const Register = async function (req, res) {
@@ -17,24 +17,22 @@ const Register = async function (req, res) {
             var hasedPass = bcrypt.hashSync(req.body.password, 10);
             const fname = req.body.fname
             const lname = req.body.lname
-            const password = hasedPass
-            const imgName = req.files.profile_IMG.name;
            
+            // uploading image on cloudinary
+             const result = await cloudinary.v2.uploader.upload(req.file.path);
 
-            const result = await cloudinary.v2.uploader.upload(req.files.tempFilePath);
-
-            //  const result = await cloudinary.v2.uploader.upload(req.file.path);
             // create userModel
-            // const register = new userModel({
-            // fname : fname, 
-            //     lname : lname,
-            //     email : email, 
-            //     password : hasedPass,
-            //     porfile_IMG : profile_IMG
-            // })
+            const register = new userModel({
+                fname : fname, 
+                lname : lname,
+                email : email, 
+                password : hasedPass,
+                profile_IMG :  result.url
+            })
 
-            // save user in database
-            // await register.save();
+            
+            // // save user in database
+            await register.save();
             res.status(201).json({"success" : 'user created successfully'})
 
         }else{

@@ -18,7 +18,9 @@ router.get('/comment/delete/:id',auth, deleteComment)
 
 
 // get all single blog comments
-router.get('/comment/all-comments/',auth,  getAllSingleBlogCommnet)
+router.get('/comment/all-comments/',auth,  getAllSingleBlogCommnet);
+
+
 
 
 module.exports = router
