@@ -46,6 +46,13 @@ const users = new mongoose.Schema({
              ref : "comments"
         }
     ]
+    ,
+    categories : [
+        {
+            type : mongoose.Schema.Types.ObjectId,
+             ref : "category"
+        }
+    ]
     
 
 })

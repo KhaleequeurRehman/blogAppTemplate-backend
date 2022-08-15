@@ -7,6 +7,14 @@ const comment = new mongoose.Schema({
         type : String,
         required : [true, "comment must be provided"],
     },
+    replies : [
+        {
+            
+                type : mongoose.Schema.Types.ObjectId,
+                 ref : "replyComnt"
+            
+        }
+    ],
     
     userID : {
         type : mongoose.Schema.Types.ObjectId,
@@ -16,6 +24,7 @@ const comment = new mongoose.Schema({
         type : mongoose.Schema.Types.ObjectId,
          ref : "blog"
     },
+   
     
 },
     {

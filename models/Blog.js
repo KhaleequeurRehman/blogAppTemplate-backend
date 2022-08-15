@@ -30,6 +30,11 @@ const blog = new mongoose.Schema({
         type : String,
         required  : [true , "category must be provided"]
     },
+
+    categoryID :  {
+        type : mongoose.Schema.Types.ObjectId,
+         ref : "category"
+    }
     
 },
 { timestamps: true }
