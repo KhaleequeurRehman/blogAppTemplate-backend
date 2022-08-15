@@ -31,6 +31,8 @@ const createBlog = require('./routes/blog')
 const comment = require('./routes/comment')
 const forgetPassword = require('./routes/forgetPassword')
 const replyComnt = require('./routes/commentReply')
+const category = require('./routes/category')
+
 
 // use Router
 app.use(Register)
@@ -40,6 +42,7 @@ app.use(createBlog)
 app.use(comment)
 app.use(forgetPassword)
 app.use(replyComnt)
+app.use(category)
 
 
 

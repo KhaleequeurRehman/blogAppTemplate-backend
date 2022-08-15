@@ -8,7 +8,7 @@ const categorySchema = new mongoose.Schema({
             required : [true, "category name must be provided"]
     },
 
-    adminID : {
+    userID : {
         type : mongoose.Schema.Types.ObjectId,
         ref : "users",
         required  : [true, "category adminID must be provided"]
