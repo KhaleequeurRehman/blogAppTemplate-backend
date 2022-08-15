@@ -1,28 +1,28 @@
 const express = require("express")
 const router = express.Router()
 const userModel = require('../models/users')
-// const auth = require('../middlware.js/auth')
+const auth = require('../middleware/auth')
 const blogModel = require('../models/Blog')
+const {createBlog, getBlogs, getSingleBLog, dltBlog, updateBLog} = require('../controllers/blog')
+
 
 
 // create blog here
-router.post('/create-blog', async function (req, res) {
+// router('/create-blog').post(createBlog).get(getBlogs)
+router.post('/createBlog/:userID',auth, createBlog)
 
-    try {        
-            const createBlog = new blogModel({
-            title: req.body.title,
-            content: req.body.content,
-            Blog_Img: req.body.Blog_Img,
-            Blog_Category: req.body.Blog_Category,
-        })
+// getting all blogs
+router.get('/get-all-blog', auth, getBlogs)
 
-        await createBlog.save()
-        res.status(200).json({ "success": 'blog created successfully' })
+// getting single blogs using id
+router.get('/get-single-blog/:id', auth , getSingleBLog)
 
-    } catch(err) {
-        console.log(err)
-    }
-})
+// delte blogs using id
+router.get('/deleteBlog/:id', auth, dltBlog)
+
+
+// update blogs using id
+router.post('/updateBlog/:id', auth, updateBLog)
 
 
 // export blog here

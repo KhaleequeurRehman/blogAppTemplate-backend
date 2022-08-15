@@ -5,7 +5,7 @@ const mongoose = require('mongoose')
 const blog = new mongoose.Schema({
     author :  {
         type : mongoose.Schema.Types.ObjectId,
-         ref : "users"
+         ref : "Users"
     },
 
     title : {
@@ -19,7 +19,7 @@ const blog = new mongoose.Schema({
     comments : [
         {
             type : mongoose.Schema.Types.ObjectId,
-             ref : "comment"
+             ref : "Comments"
         }
     ],
     Blog_Img : {
@@ -30,15 +30,17 @@ const blog = new mongoose.Schema({
         type : String,
         required  : [true , "category must be provided"]
     },
-    Date : {
-        type : Date,
-        required : true,
-        default : new Date().toLocaleDateString()
+
+    categoryID :  {
+        type : mongoose.Schema.Types.ObjectId,
+         ref : "Category"
     }
-})
+    
+},
+{ timestamps: true }
+)
 
 
-
-const blogModel = mongoose.model('blog', blog)
+const blogModel = mongoose.model('Blog', blog)
 
 module.exports = blogModel
