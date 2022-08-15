@@ -11,14 +11,15 @@ const {createComment,deleteComment,getAllSingleBlogCommnet} = require('../contro
 
 
 // post comments
-router.post('/comment/add/:blogId/:userID',auth, createComment)
+router.post('/comment/:blogId/:userID',auth, createComment)
+
 
 // delete comment
-router.get('/comment/delete/:id',auth, deleteComment)
+router.delete('/comment/:id',auth, deleteComment)
 
 
 // get all single blog comments
-router.get('/comment/all-comments/',auth,  getAllSingleBlogCommnet);
+router.get('/comment',auth,  getAllSingleBlogCommnet);
 
 
 

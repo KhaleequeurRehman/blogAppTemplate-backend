@@ -8,15 +8,15 @@ const auth = require('../middleware/auth');
 const {replyCommentPost,getRepliesOfComment , deleteReply} = require('../controllers/replyComment')
 
 // post reply comments
-router.post('/reply/comment/:commentID',auth, replyCommentPost)
+router.post('/reply/:commentID',auth, replyCommentPost)
 
 
 // get all replies of exact comment
-router.get('/reply/comment/:commentID',auth, getRepliesOfComment)
+router.get('/reply/:commentID',auth, getRepliesOfComment)
 
 
 // delete reply of comment
-router.get('/reply/delete/:replyID',auth, deleteReply)
+router.delete('/reply/:replyID',auth, deleteReply)
 
 
 

@@ -14,7 +14,7 @@ const createCateory =async function (req, res) {
         })
 
        await category.save()
-       res.status(200).json({"msg" : "category created successfully"})
+       res.status(200).json(category)
 
     } catch(err) {
         res.status(500).json({err})
@@ -25,7 +25,6 @@ const createCateory =async function (req, res) {
 
 
 // get all categories
-
 const getAllCategories = async function (req, res) {
 
     try {
@@ -46,9 +45,9 @@ const deleteCategory = async function (req, res) {
 
     try {
         
-        const catID = req.params.catID
+        const id = req.params.id
 
-        await categoryModel.findOneAndDelete({_id : catID})
+        await categoryModel.findOneAndDelete({_id : id})
 
        res.status(200).json({"msg" : "category deleted successfully"})
 

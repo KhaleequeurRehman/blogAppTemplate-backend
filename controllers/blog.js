@@ -1,8 +1,8 @@
 
 const express = require("express")
 const blogModel = require('../models/Blog')
-
-
+const cloudinary = require('../config/cloudnry')
+const path = require('path')
 
 
 // creating blog here
@@ -10,16 +10,20 @@ const createBlog = async function (req, res) {
 
     try {         
             const userID = req.params.userID
+
+                
+            const result = await cloudinary.v2.uploader.upload(req.file.path);
+
             const createBlog = new blogModel({
             author : userID,
             title: req.body.title,
             content: req.body.content,
-            Blog_Img: req.body.Blog_Img,
+            Blog_Img: result.url,
             Blog_Category: req.body.Blog_Category,
         })
 
         await createBlog.save()
-        res.status(200).json({ "success": 'blog created successfully' })
+        res.status(200).json(createBlog)
 
     } catch(err) {
         console.log(err)
@@ -104,20 +108,18 @@ const updateBLog = async function(req,res){
     try{
 
        var id = req.params.id;
-
+       const result = await cloudinary.v2.uploader.upload(req.file.path);
         const update = await blogModel.findOneAndUpdate({
             title: req.body.title,
             content: req.body.content,
-            Blog_Img: req.body.Blog_Img,
+            Blog_Img: result.url,
             Blog_Category: req.body.Blog_Category,
         });
 
         res.status(201).json(update)
-        
+
     }catch(err){
-
         res.status(500).json(err)
-
     }
 
 }
