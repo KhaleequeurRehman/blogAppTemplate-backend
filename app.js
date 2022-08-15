@@ -1,5 +1,5 @@
 require('dotenv').config()
-require('./config/mongoose')
+require('./config/DB_connection')
 // working
 // it is the express,js
 const express = require('express');
