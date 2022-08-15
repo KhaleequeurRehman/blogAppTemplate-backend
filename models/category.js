@@ -10,14 +10,14 @@ const categorySchema = new mongoose.Schema({
 
     userID : {
         type : mongoose.Schema.Types.ObjectId,
-        ref : "users",
+        ref : "Users",
         required  : [true, "category adminID must be provided"]
     },
 
     blogs : [
         {
             type : mongoose.Schema.Types.ObjectId,
-            ref : "blog"
+            ref : "Blog"
         }
     ]
     
@@ -26,6 +26,6 @@ const categorySchema = new mongoose.Schema({
 )
 
 
-const category = mongoose.model('category', categorySchema)
+const category = mongoose.model('Category', categorySchema)
 
 module.exports = category

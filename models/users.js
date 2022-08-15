@@ -1,7 +1,8 @@
 const mongoose = require('mongoose')
 const validator = require('validator')
+const { Schema } = mongoose;
 
-const users = new mongoose.Schema({
+const user = new mongoose.Schema({
     fname : {
         type : String,
         required : [true,"fname is required"],
@@ -37,7 +38,7 @@ const users = new mongoose.Schema({
     Blogs : [
         {
             type : mongoose.Schema.Types.ObjectId,
-             ref : "blog"
+             ref : "Blog"
         }
     ],
     comments : [
@@ -58,6 +59,6 @@ const users = new mongoose.Schema({
 })
 
 
-const userModel =  mongoose.model('users', users)
+const userModel =  mongoose.model('Users', user)
 
 module.exports = userModel

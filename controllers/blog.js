@@ -1,6 +1,5 @@
 
 const express = require("express")
-
 const blogModel = require('../models/Blog')
 
 

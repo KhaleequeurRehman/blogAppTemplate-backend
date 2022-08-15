@@ -42,7 +42,6 @@ const getAllCategories = async function (req, res) {
 
 
 // deleting category here
-
 const deleteCategory = async function (req, res) {
 
     try {

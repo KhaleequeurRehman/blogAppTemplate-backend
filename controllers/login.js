@@ -16,13 +16,14 @@ const login = async function (req, res) {
         
         // find if account already exist
         var isAccount = await userModel.findOne({ email: email });
+        
         if(isAccount){
             const match = await bcrypt.compare(password, isAccount.password)
 
 
             if(match == true){    
                 // generating a token
-                const token =  jwt.sign({userID :isAccount._id}, process.env.SECRET_KEY)
+                const token =  jwt.sign({userID :isAccount._id}, process.env.SECRET_KEY, {expiresIn : "720 Minutes"})
                 
                 // adding token to user detials 
                 const userData= {isAccount,token : token}

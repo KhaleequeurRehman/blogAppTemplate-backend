@@ -5,7 +5,7 @@ const mongoose = require('mongoose')
 const blog = new mongoose.Schema({
     author :  {
         type : mongoose.Schema.Types.ObjectId,
-         ref : "users"
+         ref : "Users"
     },
 
     title : {
@@ -19,7 +19,7 @@ const blog = new mongoose.Schema({
     comments : [
         {
             type : mongoose.Schema.Types.ObjectId,
-             ref : "comments"
+             ref : "Comments"
         }
     ],
     Blog_Img : {
@@ -33,7 +33,7 @@ const blog = new mongoose.Schema({
 
     categoryID :  {
         type : mongoose.Schema.Types.ObjectId,
-         ref : "category"
+         ref : "Category"
     }
     
 },
@@ -41,6 +41,6 @@ const blog = new mongoose.Schema({
 )
 
 
-const blogModel = mongoose.model('blog', blog)
+const blogModel = mongoose.model('Blog', blog)
 
 module.exports = blogModel

@@ -5,7 +5,7 @@ const bcrypt = require('bcrypt')
 const path = require('path')
 const cloudinary = require('../config/cloudnry')
 
-
+// register user here
 const Register = async function (req, res) {
 
     try {

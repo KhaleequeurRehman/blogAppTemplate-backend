@@ -32,7 +32,7 @@ const comment = require('./routes/comment')
 const forgetPassword = require('./routes/forgetPassword')
 const replyComnt = require('./routes/commentReply')
 const category = require('./routes/category')
-
+const contact = require('./routes/contact')
 
 // use Router
 app.use(Register)
@@ -43,10 +43,11 @@ app.use(comment)
 app.use(forgetPassword)
 app.use(replyComnt)
 app.use(category)
+app.use(contact)
 
 
 
-
+// here I am listenining the port number 3000 localhost
 app.listen(PORT, function(err,data){
     if(err){
         console.log('something went wrong in server')

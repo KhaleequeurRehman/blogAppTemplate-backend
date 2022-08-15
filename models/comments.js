@@ -18,11 +18,11 @@ const comment = new mongoose.Schema({
     
     userID : {
         type : mongoose.Schema.Types.ObjectId,
-         ref : "users"
+         ref : "Users"
     },
     blogID :  {
         type : mongoose.Schema.Types.ObjectId,
-         ref : "blog"
+         ref : "Blog"
     },
    
     
@@ -34,6 +34,6 @@ const comment = new mongoose.Schema({
 
 
 
-const commentModel = mongoose.model('comments', comment)
+const commentModel = mongoose.model('Comments', comment)
 
 module.exports = commentModel
