@@ -9,6 +9,8 @@ const {forgetPassword,newPassword} = require('../controllers/forgetPassword')
 
 // here I am creating forget password api, to change the password or reset the password
 router.post('/forget-password', auth, forgetPassword)
+
+// new password router here
 router.post('/new-password/:id', auth, newPassword)
 
 

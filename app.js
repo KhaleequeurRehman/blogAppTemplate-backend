@@ -7,7 +7,6 @@ const app = express()
 const path = require('path');
 const fileUpload = require('express-fileupload');
 const PORT = 3000 || process.env.PORT;
-const brycpt = require('bcrypt')
 const bodyParser = require('body-parser')
 
 
@@ -17,6 +16,8 @@ app.use(express.json())
 app.use(bodyParser.urlencoded({extended : true}))
 app.use(express.static(__dirname + '/public/'));
 
+
+// this express js moethod to upload file frm express.js
 // app.use(fileUpload({
 //     useTempFiles : true,
 //     tempFileDir : '/tmp/'

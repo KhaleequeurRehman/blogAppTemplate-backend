@@ -11,6 +11,9 @@ router.get('/user/get-all',auth, getAlluser)
 
 // delete user
 router.get('/user/delete/:id',auth, dltUser) 
+
+
+// geting single user 
 router.get('/user/get-single-user/:id',auth, getSingleUser) 
 
 

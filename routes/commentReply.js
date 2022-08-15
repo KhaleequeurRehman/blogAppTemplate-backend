@@ -4,7 +4,7 @@ const auth = require('../middleware/auth');
 
 
 
-// controlles
+// geting controlles
 const {replyCommentPost,getRepliesOfComment , deleteReply} = require('../controllers/replyComment')
 
 // post reply comments

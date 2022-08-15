@@ -10,9 +10,18 @@ const {createBlog, getBlogs, getSingleBLog, dltBlog, updateBLog} = require('../c
 // create blog here
 // router('/create-blog').post(createBlog).get(getBlogs)
 router.post('/createBlog/:userID',auth, createBlog)
+
+// getting all blogs
 router.get('/get-all-blog', auth, getBlogs)
+
+// getting single blogs using id
 router.get('/get-single-blog/:id', auth , getSingleBLog)
+
+// delte blogs using id
 router.get('/deleteBlog/:id', auth, dltBlog)
+
+
+// update blogs using id
 router.post('/updateBlog/:id', auth, updateBLog)
 
 
