@@ -3,16 +3,20 @@ const express = require("express")
 const blogModel = require('../models/Blog')
 const cloudinary = require('../config/cloudnry')
 const path = require('path')
+const userModel = require('../models/Users');
+
+
 
 
 // creating blog here
 const createBlog = async function (req, res) {
-
     try {         
             const userID = req.params.userID
 
-                
             const result = await cloudinary.v2.uploader.upload(req.file.path);
+            
+            // getting all models
+            const user = await userModel.findOne({_id : userID})
 
             const createBlog = new blogModel({
             author : userID,
@@ -23,6 +27,8 @@ const createBlog = async function (req, res) {
         })
 
         await createBlog.save()
+        user.Blogs.push(createBlog._id)
+        await user.save()
         res.status(200).json(createBlog)
 
     } catch(err) {
@@ -37,9 +43,7 @@ const createBlog = async function (req, res) {
 const getBlogs = async function(req,res){
 
     try{
-
         const allBLog = await blogModel.find()
-        
         res.status(200).json(allBLog)
 
     }catch(err){
@@ -82,16 +86,35 @@ const dltBlog = async function(req,res){
     try{
 
        const id = req.params.id
-       
+        
+    //    getting blog by ID
+       const blog = await blogModel.findOne({_id : id})
+    
+       if(!blog){
+            res.status(200).json({"msg":'blog already been deleted'})
+       }else{
+
+    //    getting user from Blog Author
+       const user = await userModel.findOne({_id : blog.author})
+
+    //    deleting blog from databse
        const deleteBLog = await blogModel.findOneAndDelete({_id : id})
-        if(!deleteBLog){
-            res.status(200).json({"msg":"blog already deleted"})
-        }else{
-            res.status(200).json({"msg":"blog deleted Successfully"})
-        }
+
+        // finding index of blogID in usrModel BLogAry
+       var blogsAry = user.Blogs // getting blogs from userModel 
+       const indexOfBLogID = blogsAry.indexOf(id); //getting index number of ID in user model BLog Aray
+       user.Blogs.splice(indexOfBLogID, 1) // deleting that index number from aray in userMOdel Blog Ary
+    
+       await user.save()
+        
+  
+        res.status(200).json({"msg":"blog deleted successfully"})
+
+    }
+
 
     }catch(err){
-
+        
         res.status(500).json(err)
 
     }

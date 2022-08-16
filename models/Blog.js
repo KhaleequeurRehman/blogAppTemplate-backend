@@ -3,10 +3,11 @@ const mongoose = require('mongoose')
 
 
 const blog = new mongoose.Schema({
-    author :  {
-        type : mongoose.Schema.Types.ObjectId,
-         ref : "Users"
-    },
+    author :  
+        {
+            type : mongoose.Schema.Types.ObjectId,
+            ref : "Users"
+        },
 
     title : {
         type : String,

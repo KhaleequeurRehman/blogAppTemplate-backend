@@ -1,5 +1,5 @@
 
-const userModel = require('../models/users')
+const userModel = require('../models/Users')
 const bcrypt = require('bcrypt')
 const path = require('path')
 const cloudinary = require('../config/cloudnry')

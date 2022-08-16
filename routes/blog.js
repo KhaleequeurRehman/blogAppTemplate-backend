@@ -24,7 +24,7 @@ router.delete('/blog/:id', auth, dltBlog)
 
 
 // update blogs using id
-router.put('/blog/:id',imgUpload.single("Blog_Img"), auth, updateBLog)
+router.patch('/blog/:id',imgUpload.single("Blog_Img"), auth, updateBLog)
 
 
 // export blog here

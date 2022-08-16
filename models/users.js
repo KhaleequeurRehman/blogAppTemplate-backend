@@ -37,16 +37,10 @@ const user = new mongoose.Schema({
     Blogs : [
         {
             type : mongoose.Schema.Types.ObjectId,
-             ref : "Blog"
+             ref : "Blog",
         }
+
     ],
-    comments : [
-        {
-            type : mongoose.Schema.Types.ObjectId,
-             ref : "comments"
-        }
-    ]
-    ,
     categories : [
         {
             type : mongoose.Schema.Types.ObjectId,

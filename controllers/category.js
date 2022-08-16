@@ -1,6 +1,6 @@
 const express = require("express")
 const router = express.Router()
-const categoryModel = require('../models/category')
+const categoryModel = require('../models/Category')
 
 
 // create new category here

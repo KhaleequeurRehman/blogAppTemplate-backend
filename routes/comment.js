@@ -1,9 +1,9 @@
 const express = require("express")
 const router = express.Router()
-const userModel = require('../models/users')
+const userModel = require('../models/Users')
 const blogModel = require('../models/Blog')
 const createBog = require('../controllers/blog')
-const commentModel = require('../models/comments');
+const commentModel = require('../models/Comments');
 const auth = require('../middleware/auth');
 
 // get controllers
@@ -11,7 +11,7 @@ const {createComment,deleteComment,getAllSingleBlogCommnet} = require('../contro
 
 
 // post comments
-router.post('/comment/:blogId/:userID',auth, createComment)
+router.post('/comment/:blogId/',auth, createComment)
 
 
 // delete comment
