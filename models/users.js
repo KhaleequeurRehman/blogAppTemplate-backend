@@ -15,9 +15,11 @@ const user = new mongoose.Schema({
         required : [true,"enter email"],
         unique : [true,"this email is already exist"],
         validate(value){
+
             if(!validator.isEmail(value)){
                 throw new Error('Email is invalid')
             }
+            
         }
     },
     profile_IMG : {
@@ -45,6 +47,12 @@ const user = new mongoose.Schema({
         {
             type : mongoose.Schema.Types.ObjectId,
              ref : "category"
+        }
+    ],
+    comments : [
+        {
+            type : mongoose.Schema.Types.ObjectId,
+             ref : "Comments"
         }
     ]
     

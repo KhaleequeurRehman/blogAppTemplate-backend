@@ -61,6 +61,8 @@ const login = async function (req, res) {
         
         // find if account already exist
         var isAccount = await userModel.findOne({ email: email });
+       
+
         if(isAccount){
             const match = await bcrypt.compare(password, isAccount.password)
             

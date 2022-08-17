@@ -27,10 +27,6 @@ const blog = new mongoose.Schema({
         type : String,
         required  : [true , "image must be provided"]
     },
-    Blog_Category : {
-        type : String,
-        required  : [true , "category must be provided"]
-    },
 
     categoryID :  {
         type : mongoose.Schema.Types.ObjectId,

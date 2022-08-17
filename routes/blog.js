@@ -11,7 +11,7 @@ const {createBlog, getBlogs, getSingleBLog, dltBlog, updateBLog} = require('../c
 
 // create blog here
 // router('/create-blog').post(createBlog).get(getBlogs)
-router.post('/blog/:userID',imgUpload.single("Blog_Img"),auth, createBlog)
+router.post('/blog/:userID/:catID',imgUpload.single("Blog_Img"),auth, createBlog)
 
 // getting all blogs
 router.get('/blog', auth, getBlogs)

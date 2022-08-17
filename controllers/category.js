@@ -1,12 +1,13 @@
 const express = require("express")
 const router = express.Router()
 const categoryModel = require('../models/Category')
-
+const blogModel = require('../models/Blog')
 
 // create new category here
 const createCateory =async function (req, res) {
 
-    try {
+    try {   
+
         
         const category = new categoryModel({
             category_Name: req.body.cate_name,

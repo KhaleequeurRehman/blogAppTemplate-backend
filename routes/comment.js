@@ -11,7 +11,7 @@ const {createComment,deleteComment,getAllSingleBlogCommnet} = require('../contro
 
 
 // post comments
-router.post('/comment/:blogId/',auth, createComment)
+router.post('/comment/:blogId/:userID',auth, createComment)
 
 
 // delete comment
