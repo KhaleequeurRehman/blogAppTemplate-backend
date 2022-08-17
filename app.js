@@ -26,6 +26,7 @@ app.use(express.static(__dirname + '/public/'));
 
 // middle wares 
 const Register = require('./routes/register');
+const LikedAndDisLike = require('./routes/LikeAndDisLike')
 
 const createBlog = require('./routes/blog')
 const comment = require('./routes/comment')
@@ -42,6 +43,7 @@ app.use(forgetPassword)
 app.use(replyComnt)
 app.use(category)
 app.use(contact)
+app.use(LikedAndDisLike)
 
 
 // here I am listenining the port number 3000 localhost

@@ -31,7 +31,13 @@ const blog = new mongoose.Schema({
     categoryID :  {
         type : mongoose.Schema.Types.ObjectId,
          ref : "Category"
-    }
+    },
+
+    LikedBy : [
+        {
+            type : mongoose.Schema.Types.ObjectId,
+        }
+    ],
     
 },
 { timestamps: true }
