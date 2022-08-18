@@ -3,10 +3,11 @@ const mongoose = require('mongoose')
 
 
 const blog = new mongoose.Schema({
-    author :  {
-        type : mongoose.Schema.Types.ObjectId,
-         ref : "Users"
-    },
+    author :  
+        {
+            type : mongoose.Schema.Types.ObjectId,
+            ref : "Users"
+        },
 
     title : {
         type : String,
@@ -26,15 +27,17 @@ const blog = new mongoose.Schema({
         type : String,
         required  : [true , "image must be provided"]
     },
-    Blog_Category : {
-        type : String,
-        required  : [true , "category must be provided"]
-    },
 
     categoryID :  {
         type : mongoose.Schema.Types.ObjectId,
          ref : "Category"
-    }
+    },
+
+    LikedBy : [
+        {
+            type : mongoose.Schema.Types.ObjectId,
+        }
+    ],
     
 },
 { timestamps: true }

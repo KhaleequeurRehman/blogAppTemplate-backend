@@ -1,28 +1,30 @@
 const express = require("express")
 const router = express.Router()
-const userModel = require('../models/users')
 const auth = require('../middleware/auth')
-const blogModel = require('../models/Blog')
+const imgUpload = require('../middleware/imgUplaod')
+
+
+
 const {createBlog, getBlogs, getSingleBLog, dltBlog, updateBLog} = require('../controllers/blog')
 
 
 
 // create blog here
 // router('/create-blog').post(createBlog).get(getBlogs)
-router.post('/createBlog/:userID',auth, createBlog)
+router.post('/blog/:userID/:catID',imgUpload.single("Blog_Img"),auth, createBlog)
 
 // getting all blogs
-router.get('/get-all-blog', auth, getBlogs)
+router.get('/blog', auth, getBlogs)
 
 // getting single blogs using id
-router.get('/get-single-blog/:id', auth , getSingleBLog)
+router.get('/blog/:id', auth , getSingleBLog)
 
 // delte blogs using id
-router.get('/deleteBlog/:id', auth, dltBlog)
+router.delete('/blog/:id', auth, dltBlog)
 
 
 // update blogs using id
-router.post('/updateBlog/:id', auth, updateBLog)
+router.patch('/blog/:id',imgUpload.single("Blog_Img"), auth, updateBLog)
 
 
 // export blog here

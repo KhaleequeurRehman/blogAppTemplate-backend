@@ -1,5 +1,5 @@
 require('dotenv').config()
-require('./config/mongoose')
+require('./config/DB_connection')
 // working
 // it is the express,js
 const express = require('express');
@@ -8,14 +8,15 @@ const path = require('path');
 const fileUpload = require('express-fileupload');
 const PORT = 3000 || process.env.PORT;
 const bodyParser = require('body-parser')
-
+const cors = require('cors')
 
 
 // app use
 app.use(express.json())
 app.use(bodyParser.urlencoded({extended : true}))
 app.use(express.static(__dirname + '/public/'));
-
+ 
+app.use(cors())
 
 // this express js moethod to upload file frm express.js
 // app.use(fileUpload({
@@ -26,8 +27,8 @@ app.use(express.static(__dirname + '/public/'));
 
 // middle wares 
 const Register = require('./routes/register');
-const login = require('./routes/login');
-const allUser = require('./routes/users');
+const LikedAndDisLike = require('./routes/LikeAndDisLike')
+
 const createBlog = require('./routes/blog')
 const comment = require('./routes/comment')
 const forgetPassword = require('./routes/forgetPassword')
@@ -37,15 +38,13 @@ const contact = require('./routes/contact')
 
 // use Router
 app.use(Register)
-app.use(login) 
-app.use(allUser)
 app.use(createBlog)
 app.use(comment)
 app.use(forgetPassword)
 app.use(replyComnt)
 app.use(category)
 app.use(contact)
-
+app.use(LikedAndDisLike)
 
 
 // here I am listenining the port number 3000 localhost

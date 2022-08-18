@@ -16,10 +16,6 @@ const comment = new mongoose.Schema({
         }
     ],
     
-    userID : {
-        type : mongoose.Schema.Types.ObjectId,
-         ref : "Users"
-    },
     blogID :  {
         type : mongoose.Schema.Types.ObjectId,
          ref : "Blog"
