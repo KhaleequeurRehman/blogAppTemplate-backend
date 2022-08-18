@@ -5,7 +5,7 @@ const Likes = require('../controllers/LikeAndDislike')
 
 
 // likes to blog
-router.post('/like/:blogID/:userID',Likes)
+router.post('/like/:blogID/:userID', auth ,Likes)
 
 
 module.exports = router

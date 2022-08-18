@@ -8,14 +8,15 @@ const path = require('path');
 const fileUpload = require('express-fileupload');
 const PORT = 3000 || process.env.PORT;
 const bodyParser = require('body-parser')
-
+const cors = require('cors')
 
 
 // app use
 app.use(express.json())
 app.use(bodyParser.urlencoded({extended : true}))
 app.use(express.static(__dirname + '/public/'));
-
+ 
+app.use(cors())
 
 // this express js moethod to upload file frm express.js
 // app.use(fileUpload({

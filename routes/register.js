@@ -7,7 +7,7 @@ const imgUpload = require('../middleware/imgUplaod')
 const auth = require('../middleware/auth')
 
 // user register here
-router.post('/user/register',imgUpload.single("profile_IMG"),Register)
+router.post('/user/register',imgUpload.single("profileimg"),Register)
 
 
 // user login here

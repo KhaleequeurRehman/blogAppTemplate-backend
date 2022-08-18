@@ -12,7 +12,9 @@ const Register = async function (req, res) {
     try {
         const email = req.body.email;
         const checkAccount = await userModel.findOne({ email: email })
-        
+        // console.log("this is body: ", req.body)
+        console.log('this is file: ', req.file)
+
         if (!checkAccount) {
 
             var hasedPass = bcrypt.hashSync(req.body.password, 10);
@@ -20,7 +22,7 @@ const Register = async function (req, res) {
             const lname = req.body.lname
            
             // uploading image on cloudinary
-             const result = await cloudinary.v2.uploader.upload(req.file.path);
+            const result = await cloudinary.v2.uploader.upload(req.file.path);
 
             // create userModel
             const register = new userModel({
@@ -32,7 +34,7 @@ const Register = async function (req, res) {
             })
 
             
-            // // save user in database
+            // save user in database
             await register.save();
             res.status(201).json({"success" : 'user created successfully'})
 
@@ -42,7 +44,8 @@ const Register = async function (req, res) {
         
         }
     } catch (error) {
-        res.send({"error" : error})
+        console.log(error)
+        res.send(error)
     }
 }
 
